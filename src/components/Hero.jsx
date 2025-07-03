@@ -1,9 +1,13 @@
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
-import React from "react";
+import React, { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+  const videoRef = useRef(null);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   useGSAP(() => {
     const heroSpilt = new SplitText(".title", {
       type: "chars, words",
@@ -55,6 +59,30 @@ const Hero = () => {
         },
         0
       );
+
+    // going to figure where the animation starts and ends
+    const startValue = isMobile ? "top 50%" : "center 60%"; // when the top of the hero section hits 50% of the viewport height the animation starts diff for mobile and desktop
+    const endValue = isMobile ? "120% top" : "bottom top"; // for the desktop version, the animation ends when the bottom of the hero section hits the top of the viewport and for mobile when the hero section is 120% of the viewport height
+
+    //video animation timeline
+    //create the timeline with a default duration
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "video",
+        start: startValue, // when the top of the video hits 50% of the viewport height
+        end: endValue, // when the bottom of the hero section hits the top of the viewport
+        scrub: true, // smooth scrubbing
+        pin: true, // pin the video in place
+      },
+    });
+    videoRef.current.onloadedmetadata = () => {
+      tl.to(videoRef.current, {
+        //This way we updating the video currentTime to match the scroll position
+        currentTime: videoRef.current.duration, // play the video from start to end
+        // ease: "none", // no easing
+        // duration: videoRef.current.duration, // duration of the video
+      });
+    };
   }, []); // empty Array to run only once
   return (
     <>
@@ -91,6 +119,17 @@ const Hero = () => {
           </div>
         </div>
       </section>
+
+      {/* video absolute means we dont the video to interact with other other elements */}
+      <div className="video absolute inset-0">
+        <video
+          ref={videoRef}
+          src="/videos/output.mp4"
+          muted
+          playsInline
+          preload="auto"
+        ></video>
+      </div>
     </>
   );
 };
