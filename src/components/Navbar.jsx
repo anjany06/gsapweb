@@ -2,29 +2,29 @@ import React from "react";
 import { navLinks } from "../../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-useGSAP(() => {
-  const navTween = gsap.timeline({
-    scrollTrigger: {
-      trigger: "nav",
-      start: "bottom top", // fist trigger when the bottom of the nav hits the top of the viewport
-    },
-  });
-
-  navTween.fromTo(
-    "nav",
-    {
-      backgroundColor: "transparent",
-    },
-    {
-      backgroundColor: "#00000050",
-      backgroundFilter: "blur(10px)",
-      duration: 1,
-      ease: "power1.inOut",
-    }
-  );
-});
 
 const Navbar = () => {
+  useGSAP(() => {
+    const navTween = gsap.timeline({
+      scrollTrigger: {
+        trigger: "nav",
+        start: "bottom top", // fist trigger when the bottom of the nav hits the top of the viewport
+      },
+    });
+
+    navTween.fromTo(
+      "nav",
+      {
+        backgroundColor: "transparent",
+      },
+      {
+        backgroundColor: "#00000050",
+        backgroundFilter: "blur(10px)",
+        duration: 1,
+        ease: "power1.inOut",
+      }
+    );
+  });
   return (
     <nav>
       <div>
