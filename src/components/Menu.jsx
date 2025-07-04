@@ -139,8 +139,8 @@ const Menu = () => {
           );
         })}
       </nav>
-      <div className="content container-padding">
-        <div className="arrows">
+      <div className="content">
+        <div className="arrows container-padding">
           <button
             className="text-left"
             onClick={() => goToSlide(currentIndex - 1)}
@@ -165,7 +165,7 @@ const Menu = () => {
           </button>
         </div>
 
-        <div className="cocktail">
+        <div className="cocktail container-padding">
           <img
             src={currentCocktail.image}
             alt="current-cocktail-image"
