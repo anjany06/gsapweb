@@ -139,7 +139,7 @@ const Menu = () => {
           );
         })}
       </nav>
-      <div className="content px-5 md:px-20">
+      <div className="content px-5 md:px-16">
         <div className="arrows">
           <button
             className="text-left"
