@@ -66,7 +66,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="top-grid">
+      <div className="top-grid container-padding">
         <div className="md:col-span-3">
           <div className="noisy" />
           <img src="/images/abt1.png" alt="grid-img-1" />
@@ -83,7 +83,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="bottom-grid">
+      <div className="bottom-grid container-padding">
         <div className="md:col-span-8">
           <div className="noisy" />
           <img src="/images/abt3.png" alt="grid-img-3" />
