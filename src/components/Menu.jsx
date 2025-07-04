@@ -140,7 +140,7 @@ const Menu = () => {
         })}
       </nav>
       <div className="content">
-        <div className="arrows container-padding">
+        <div className="arrows px-5 md:px-12 2xl:px-16">
           <button
             className="text-left"
             onClick={() => goToSlide(currentIndex - 1)}
@@ -165,7 +165,7 @@ const Menu = () => {
           </button>
         </div>
 
-        <div className="cocktail container-padding">
+        <div className="cocktail px-5 md:px-12 2xl:px-16">
           <img
             src={currentCocktail.image}
             alt="current-cocktail-image"
@@ -173,7 +173,7 @@ const Menu = () => {
           />
         </div>
 
-        <div className="recipe">
+        <div className="recipe px-5 md:px-12 2xl:px-16">
           <div ref={contentRef} className="info">
             <p>Recipe For : </p>
             <p id="title">{currentCocktail.name}</p>
